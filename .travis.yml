@@ -26,7 +26,6 @@ install:
   - source activate test-environment
   - export PYTHONPATH=/home/travis/miniconda/envs/test-environment/lib/python3.3/site-packages/:${PYTHONPATH}
   - pip install -r requirements.txt
-  - sudo apt-get install python3-lxml
   - python setup.py install
 
 script:
