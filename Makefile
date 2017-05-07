@@ -4,9 +4,9 @@ install:
 	python setup.py install
 
 clean:
-	rm -rf build
-	rm -rf dist
-	rm -rf *.egg-info
+	rm -r build
+	rm -r dist
+	rm -r *.egg-info
 
 test: install
 	py.test test/unit_tests
