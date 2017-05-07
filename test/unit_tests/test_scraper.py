@@ -1,5 +1,7 @@
 from unittest.mock import patch
+
 from scraper.scraper import get_player_list
+
 
 class MockResponse:
     """ Text from real request. Simply mocked here for speed, it's important unit tests run quickly. """
