@@ -1,11 +1,11 @@
 langauge: python
 python:
-  - "3.6"
+  - 3.6
 
 install:
-  - "make install"
+  - make install
 
 script: 
-  - "make test"
+  - make test
 
 sudo: false
