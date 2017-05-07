@@ -18,6 +18,11 @@ def test_player_list_behaves_like_list(*args, **kwargs):
     url = "http://games.espn.com/flb/clubhouse?leagueId=13127&teamId=11&seasonId=2017"
     player_list = get_player_list(url)
 
-    print("player list: ", player_list)
-
     assert player_list[player_list.index("Miguel Cabrera")] == "Miguel Cabrera"
+
+@patch('requests.get', return_value=MockResponse())
+def test_player_list_doesnt_contain_nones(*args, **kwargs):
+    url = "http://games.espn.com/flb/clubhouse?leagueId=13127&teamId=11&seasonId=2017"
+    player_list = get_player_list(url)
+
+    assert None not in player_list

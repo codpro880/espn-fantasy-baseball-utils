@@ -11,8 +11,6 @@ def _get_page_data(team_url):
     return html_data
 
 def _parse_page_data(page_data):
-    soup = BeautifulSoup(page_data, "lxml")
-    all_tds = soup.find_all('td')
     def filter_by_attribute(tags, attribute, attribute_value):
         for tag in tags:
             try:
@@ -21,17 +19,16 @@ def _parse_page_data(page_data):
             except KeyError:
                 pass
 
-    relevant_tds = list(filter_by_attribute(all_tds, 'class', 'playertablePlayerName'))
-    print("tds: ", list(relevant_tds))
+    def get_soup_for_tag(data, tag):
+        soup = BeautifulSoup(data, "lxml")
+        return soup.find_all(tag)
 
-    td_soup = BeautifulSoup("".join(str(relevant_tds)))
-    all_a_in_td = td_soup.find_all('a')
-    players = []
-    for a in all_a_in_td:
-        try:
-            if a['playerid']:
-                players.append(a.string)
-        except KeyError:
-            pass
+    all_tds = get_soup_for_tag(page_data, 'td')
+    relevant_tds = filter_by_attribute(all_tds, 'class', 'playertablePlayerName')
+
+    all_a_in_td = get_soup_for_tag("".join([str(td) for td in relevant_tds]), 'a')
+    player_tags = filter_by_attribute(all_a_in_td, 'playerid', '')
+
+    players = [player_tag.string for player_tag in player_tags if player_tag.string]
 
     return players
