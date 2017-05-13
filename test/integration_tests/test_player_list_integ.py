@@ -1,4 +1,4 @@
-from scraper.scraper import get_player_list
+from scraper.player_list import get_player_list
 
 
 def test_get_player_list(*args, **kwargs):

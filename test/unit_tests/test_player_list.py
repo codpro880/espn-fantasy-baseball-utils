@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from scraper.scraper import get_player_list
+from scraper.player_list import get_player_list
 
 
 class MockResponse:
