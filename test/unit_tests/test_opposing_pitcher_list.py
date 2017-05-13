@@ -1,8 +1,8 @@
 from unittest.mock import patch
 
-from scraper.opposing_pitcher_list import get_matchups
-
 import response_data
+
+from scraper.opposing_pitcher_list import get_matchups
 
 
 class MockOppPitchResponse:
