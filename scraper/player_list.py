@@ -1,19 +1,17 @@
-import requests
 from bs4 import BeautifulSoup
 
+from scraper.soup_utils import get_page_data
+
+
 def get_matchups(team_url):
-    page_data = _get_page_data(team_url)
+    page_data = get_page_data(team_url)
     opposing_pitchers = _parse_data_for_opp_pitch(page_data)
     return opposing_pitchers
 
 def get_player_list(team_url):
-    page_data = _get_page_data(team_url)
+    page_data = get_page_data(team_url)
     player_list = _parse_data_for_players(page_data)
     return player_list
-
-def _get_page_data(team_url):
-    html_data = requests.get(team_url).text
-    return html_data
 
 def _parse_data_for_players(page_data):
     def get_tags_for_data(data, tag):
