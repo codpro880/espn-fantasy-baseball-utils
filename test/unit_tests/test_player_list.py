@@ -1,12 +1,12 @@
 from unittest.mock import patch
 
-import player_list_data
+import response_data
 
 from scraper.player_list import get_player_list
 
 """ All text from real requests. Simply mocked here for speed, it's important unit tests run quickly. """
 class MockResponse:
-    text = player_list_data.player_list_request_response
+    text = response_data.player_list_request_response
 
 
 @patch('requests.get', autospec=True, return_value=MockResponse())

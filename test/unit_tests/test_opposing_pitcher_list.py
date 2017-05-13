@@ -2,11 +2,11 @@ from unittest.mock import patch
 
 from scraper.opposing_pitcher_list import get_matchups
 
-import player_list_data
+import response_data
 
 
 class MockOppPitchResponse:
-    text = player_list_data.opp_pitch_request_response
+    text = response_data.opp_pitch_request_response
 
 
 @patch('requests.get', autospec=True, return_value=MockOppPitchResponse())
